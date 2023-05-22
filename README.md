@@ -1,7 +1,7 @@
 # Genetic-Programming-for-Symbolic-Regression
 
 
-This repository contains code for implementing genetic programming for symbolic regression. The code uses a genetic algorithm to evolve a population of trees to find the best regression for a given dataset.
+This repository contains code for implementing genetic programming for symbolic regression. The code uses a genetic algorithm to evolve a population of trees to find the best regression for a given dataset. Our research paper [Using Genetic Programming (GP) to Implement Symbolic Regression.pdf](https://github.com/bryce-ka/Genetic-Programming-for-Symbolic Regression/blob/main/Using%20Genetic%20Programming%20(GP)%20to%20Implement%20Symbolic%20Regression.pdf) explains our implementation of genetic programming along with our results. 
 
 ## Overview
 
