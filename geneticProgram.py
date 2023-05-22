@@ -1,15 +1,12 @@
 import pandas as pd
 from Node import Node
 from Tree import Tree
-# !pip install scikit-learn
+
 import random
 import sklearn
 import time 
 import math
 
-# ds1 = pd.read_csv("dataset1.csv")
-# ds1
-    
 
 def get_equation(root):
     if(not root):
@@ -51,7 +48,6 @@ def setUpTreeGen(treeList, df): #sets up variables for each new generation
     treeDict = {}
     fitness_all = []
     for i in range(len(treeList)): #seed population
-        # treeFitness = treeList[i].fitness(df) #calculate fitness of new tree
         treeFitness = treeList[i].fitness(df) #calculate fitness of new tree
         fitness_all.append(treeFitness) #adds fitness to list of fitnesses
         treeDict[treeFitness] = treeList[i]  #pairs tree fitness with the tree
@@ -70,9 +66,7 @@ def evolution(df):
         treeList.append(Tree(2, None, 1))
     treeDict, fitness_all = setUpTreeGen(treeList, df)
 
-    # written_equation = ""
     while best > 6 and count <= 30: #keep making new generations until there have been 50 or the mean squared error is less than 6
-        # print("generation: ", count)
         next_gen = []
         switchMethod = 1
         while (len(next_gen) < len(treeList)): #keep running tournaments until next_gen is filled out
@@ -85,21 +79,15 @@ def evolution(df):
                 next_gen.append(runTournament(fitness_all, tournament, treeDict, -1))
             switchMethod += 1
 
-        # written_equation = ""
+      
         treeList = next_gen
         treeDict, fitness_all = setUpTreeGen(treeList, df) #refreshes variables for newGeneration
-
         best = min(fitness_all) #checks to see if the best has been reached
         best_tree_index = fitness_all.index(best)
         best_tree = treeList[best_tree_index]
-        # print(fitness_all)
-        # get_equation(best_tree.root, written_equation, "c")
         count+=1
 
-    # print("made it through the weeds")
-    # print(len(treeList))
-    # print(best)
-    # print(best_tree)
+
     return best_tree, best 
 
 def bloatControl():
@@ -114,7 +102,6 @@ def bloatControl():
     count = 1
     for i in range(10): #run the evolution 10 different times to get ten different models
         tree, fitness = evolution(trainingSet)
-        # bestOptions[fitness] = tree
         treeList.append(tree)
         fitnessList.append(fitness)
         print("times rans: ")
@@ -132,7 +119,6 @@ def bloatControl():
         fit_all.append(potential)
     best_fit = min(fit_all)
     print(best_fit)
-    # get_equation(bestOptions[best_fit].root)
     return bestOptions[best_fit], best_fit
  
     
